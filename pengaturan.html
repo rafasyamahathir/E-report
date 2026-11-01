@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | E-Medicare Admin</title>
+    <meta name="description" content="Settings admin E-Medicare: profil, akun, notifikasi, tampilan, dan data.">
+    <meta name="theme-color" content="#4D8DBA">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="hospital.png">
+    <script>
+        /* Terapkan tema & kelas "js" sebelum halaman tampil (mencegah kilatan warna) */
+        (function () {
+            try {
+                var m = localStorage.getItem('em3.theme') || 'system';
+                var d = m === 'dark' || (m === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                document.documentElement.setAttribute('data-bs-theme', d ? 'dark' : 'light');
+            } catch (e) {}
+            document.documentElement.className += ' js';
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.css" integrity="sha512-vWHsp0PuTxwRMLtGTnbS7PDNtI7yFmmiFq24hjcqpup/KK7ixxWdXwRmerG9gu7peaSRIVxpFcfBSVrGzWcF4w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin" data-page="pengaturan">
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- TOPBAR ADMIN -->
+<header class="admin-topbar">
+    <button class="tb-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar" aria-label="Open menu"><i class="bi bi-list" aria-hidden="true"></i></button>
+    <a class="tb-brand" href="index.html" aria-label="E-Medicare, back to home">
+        <img src="hospital.png" alt=""><strong>E-Medicare</strong><span class="tb-tag">Admin</span>
+    </a>
+
+    <div class="tb-search" role="search">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        <input type="search" id="adminSearch" placeholder="Search reports or pages..." autocomplete="off" aria-label="Search reports or pages">
+        <kbd aria-hidden="true">/</kbd>
+        <div class="search-results" id="searchResults" hidden></div>
+    </div>
+
+    <div class="ms-auto d-flex align-items-center gap-2">
+        <button type="button" class="tb-btn d-none d-sm-grid" id="quickAdd" title="Add report" aria-label="Add report"><i class="bi bi-plus-lg" aria-hidden="true"></i></button>
+        <button type="button" class="tb-btn tb-theme d-none d-sm-grid" id="themeToggle" title="Switch light/dark mode" aria-label="Switch light or dark mode"><i class="bi bi-moon-stars-fill" aria-hidden="true"></i><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
+        <a class="tb-btn d-none d-md-grid" href="index.html" title="View website" aria-label="View website"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+
+        <!-- Notifications -->
+        <div class="dropdown">
+            <button type="button" class="tb-btn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="Notifications">
+                <i class="bi bi-bell-fill" aria-hidden="true"></i><span class="tb-badge" id="notifBadge" hidden>0</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end adm-menu notif-menu">
+                <div class="notif-head">
+                    <h2>Notifications</h2>
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="notifReadAll">Mark as read</button>
+                </div>
+                <div class="notif-list" id="notifList"></div>
+                <div class="notif-foot"><a href="dashboard.html" class="fw-semibold text-decoration-none">View all reports</a></div>
+            </div>
+        </div>
+
+        <!-- Profil -->
+        <div class="dropdown">
+            <button type="button" class="tb-profile" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Profile menu">
+                <span class="tb-avatar" data-bind="adminInitials">AD</span>
+                <span class="tb-who d-none d-md-block"><strong data-bind="adminName">Admin</strong><small data-bind="adminRole">System manager</small></span>
+                <i class="bi bi-chevron-down d-none d-md-inline small" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end adm-menu">
+                <li><a class="dropdown-item" href="pengaturan.html#akun"><i class="bi bi-person-circle" aria-hidden="true"></i>My account</a></li>
+                <li><a class="dropdown-item" href="pengaturan.html"><i class="bi bi-gear" aria-hidden="true"></i>Settings</a></li>
+                <li><a class="dropdown-item" href="statistik.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i>Statistics</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button type="button" class="dropdown-item" data-theme-set="light"><i class="bi bi-sun" aria-hidden="true"></i>Light mode</button></li>
+                <li><button type="button" class="dropdown-item" data-theme-set="dark"><i class="bi bi-moon-stars" aria-hidden="true"></i>Dark mode</button></li>
+                <li><button type="button" class="dropdown-item" data-theme-set="system"><i class="bi bi-circle-half" aria-hidden="true"></i>Follow system</button></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-box-arrow-left" aria-hidden="true"></i>Go to website</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- TOPBAR ADMIN END -->
+
+<!-- SIDEBAR -->
+<aside class="admin-sidebar" aria-label="Admin navigation">
+            <p class="side-heading">Admin menu</p>
+            <nav class="side-nav" aria-label="Admin menu">
+                <a href="dashboard.html" class=""><i class="bi bi-speedometer2" aria-hidden="true"></i><span>Dashboard</span><span class="side-count" data-bind="sideCount">0</span></a>
+                <a href="statistik.html" class=""><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Statistics</span></a>
+                <a href="pengaturan.html" class="active" aria-current="page"><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
+            </nav>
+            <p class="side-heading">Website</p>
+            <nav class="side-nav" aria-label="Website menu">
+                <a href="index.html" class=""><i class="bi bi-house-door" aria-hidden="true"></i><span>Home</span></a>
+                <a href="index.html#recent" class=""><i class="bi bi-file-earmark-medical" aria-hidden="true"></i><span>Recent Reports</span></a>
+                <a href="detail-laporan.html" class=""><i class="bi bi-collection" aria-hidden="true"></i><span>All reports</span></a>
+                <a href="index.html#faq" class=""><i class="bi bi-question-circle" aria-hidden="true"></i><span>FAQ</span></a>
+            </nav>
+            <div class="side-card">
+                <strong data-bind="hospital">E-Medicare</strong>
+                <small>Hospital reporting system</small>
+                <div class="status-line"><span class="pulse-dot" aria-hidden="true"></span>System active</div>
+            </div>
+</aside>
+<div class="offcanvas offcanvas-start mobile-sidebar" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title d-flex align-items-center gap-2" id="mobileSidebarLabel"><img src="hospital.png" alt="" width="40">E-Medicare</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+            <p class="side-heading">Admin menu</p>
+            <nav class="side-nav" aria-label="Admin menu">
+                <a href="dashboard.html" class=""><i class="bi bi-speedometer2" aria-hidden="true"></i><span>Dashboard</span><span class="side-count" data-bind="sideCount">0</span></a>
+                <a href="statistik.html" class=""><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Statistics</span></a>
+                <a href="pengaturan.html" class="active" aria-current="page"><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
+            </nav>
+            <p class="side-heading">Website</p>
+            <nav class="side-nav" aria-label="Website menu">
+                <a href="index.html" class=""><i class="bi bi-house-door" aria-hidden="true"></i><span>Home</span></a>
+                <a href="index.html#recent" class=""><i class="bi bi-file-earmark-medical" aria-hidden="true"></i><span>Recent Reports</span></a>
+                <a href="detail-laporan.html" class=""><i class="bi bi-collection" aria-hidden="true"></i><span>All reports</span></a>
+                <a href="index.html#faq" class=""><i class="bi bi-question-circle" aria-hidden="true"></i><span>FAQ</span></a>
+            </nav>
+            <div class="side-card">
+                <strong data-bind="hospital">E-Medicare</strong>
+                <small>Hospital reporting system</small>
+                <div class="status-line"><span class="pulse-dot" aria-hidden="true"></span>System active</div>
+            </div>
+    </div>
+</div>
+<!-- SIDEBAR END -->
+
+<main class="admin-main">
+    <section class="admin-banner warna-bg hero-wrap">
+        <nav class="crumbs hero-in" style="--d:0" aria-label="Breadcrumb">
+            <a href="index.html">Home</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Admin</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span aria-current="page">Settings</span>
+        </nav>
+        <h1 class="hero-in" style="--d:1">Settings</h1>
+        <p class="hero-in" style="--d:2">Manage the hospital profile, admin account, notifications, and appearance. Changes are saved in this browser.</p>
+        <svg class="hero-ecg" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M0 60 H140 L160 60 L172 48 L184 60 H210 L222 66 L238 8 L256 96 L270 60 H300 L318 50 L336 60 H620 L640 60 L652 48 L664 60 H690 L702 66 L718 8 L736 96 L750 60 H780 L798 50 L816 60 H1200"/></svg>
+    </section>
+
+        <div class="row g-4">
+            <div class="col-lg-3" data-reveal="up">
+                <div class="settings-nav nav" id="settingsTabs" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="tab-profil" data-bs-toggle="pill" data-bs-target="#pane-profil" type="button" role="tab" aria-controls="pane-profil" aria-selected="true"><i class="bi bi-hospital" aria-hidden="true"></i>Hospital profile</button>
+                <button class="nav-link" id="tab-akun" data-bs-toggle="pill" data-bs-target="#pane-akun" type="button" role="tab" aria-controls="pane-akun" aria-selected="false"><i class="bi bi-person-gear" aria-hidden="true"></i>Admin account</button>
+                <button class="nav-link" id="tab-notifikasi" data-bs-toggle="pill" data-bs-target="#pane-notifikasi" type="button" role="tab" aria-controls="pane-notifikasi" aria-selected="false"><i class="bi bi-bell" aria-hidden="true"></i>Notifications</button>
+                <button class="nav-link" id="tab-tampilan" data-bs-toggle="pill" data-bs-target="#pane-tampilan" type="button" role="tab" aria-controls="pane-tampilan" aria-selected="false"><i class="bi bi-palette" aria-hidden="true"></i>Appearance</button>
+                <button class="nav-link" id="tab-data" data-bs-toggle="pill" data-bs-target="#pane-data" type="button" role="tab" aria-controls="pane-data" aria-selected="false"><i class="bi bi-database" aria-hidden="true"></i>Data</button>
+                </div>
+            </div>
+
+            <div class="col-lg-9" data-reveal="up" style="--d:1">
+                <div class="tab-content">
+
+                    <!-- PROFIL -->
+                    <div class="tab-pane fade show active" id="pane-profil" role="tabpanel" aria-labelledby="tab-profil" tabindex="0">
+                        <form class="adm-card" id="formProfile" novalidate>
+                            <div class="adm-card-head"><div><h2><i class="bi bi-hospital" aria-hidden="true"></i>Hospital profile</h2><p>Same information as the Contact section on the website.</p></div></div>
+                            <div class="row g-3">
+                                <div class="col-12"><label for="sHospital" class="form-label">Hospital name</label><input type="text" class="form-control" id="sHospital" required maxlength="60"><div class="invalid-feedback">Name is required.</div></div>
+                                <div class="col-md-6"><label for="sEmail" class="form-label">Email</label><input type="email" class="form-control" id="sEmail" required><div class="invalid-feedback">Please enter a valid email.</div></div>
+                                <div class="col-md-6"><label for="sPhone" class="form-label">Emergency phone</label><input type="tel" class="form-control" id="sPhone" required pattern="[0-9+ \-]{3,20}"><div class="invalid-feedback">Please enter a valid phone number.</div></div>
+                                <div class="col-12"><label for="sAddress" class="form-label">Address</label><textarea class="form-control" id="sAddress" rows="3" required></textarea><div class="invalid-feedback">Address is required.</div></div>
+                            </div>
+                            <div class="mt-4"><button type="submit" class="btn btn-primary"><i class="bi bi-check-lg" aria-hidden="true"></i> Save profile</button></div>
+                        </form>
+                    </div>
+
+                    <!-- AKUN -->
+                    <div class="tab-pane fade" id="pane-akun" role="tabpanel" aria-labelledby="tab-akun" tabindex="0">
+                        <form class="adm-card" id="formAccount" novalidate>
+                            <div class="adm-card-head"><div><h2><i class="bi bi-person-gear" aria-hidden="true"></i>Admin account</h2><p>Name ini tampil di navbar admin.</p></div></div>
+                            <div class="row g-3">
+                                <div class="col-md-6"><label for="sAdmin" class="form-label">Name</label><input type="text" class="form-control" id="sAdmin" required maxlength="40"><div class="invalid-feedback">Name is required.</div></div>
+                                <div class="col-md-6"><label for="sRole" class="form-label">Position</label><input type="text" class="form-control" id="sRole" required maxlength="40"><div class="invalid-feedback">Position wajib diisi.</div></div>
+                                <div class="col-12"><label for="sAdminEmail" class="form-label">Email admin</label><input type="email" class="form-control" id="sAdminEmail" required><div class="invalid-feedback">Please enter a valid email.</div></div>
+                            </div>
+                            <div class="mt-4"><button type="submit" class="btn btn-primary"><i class="bi bi-check-lg" aria-hidden="true"></i> Save account</button></div>
+                        </form>
+
+                        <form class="adm-card" id="formPassword" novalidate autocomplete="off">
+                            <div class="adm-card-head"><div><h2><i class="bi bi-shield-lock" aria-hidden="true"></i>Change password</h2><p>UI demo only: passwords are neither sent nor stored.</p></div></div>
+                            <div class="row g-3">
+                                <div class="col-12"><label for="pwCurrent" class="form-label">Current password</label><div class="pw-wrap"><input type="password" class="form-control" id="pwCurrent" required autocomplete="off"><button type="button" class="pw-toggle" data-target="#pwCurrent" aria-label="Show or hide password"><i class="bi bi-eye" aria-hidden="true"></i></button></div><div class="invalid-feedback">Required.</div></div>
+                                <div class="col-md-6"><label for="pwNew" class="form-label">New password</label><div class="pw-wrap"><input type="password" class="form-control" id="pwNew" required minlength="8" autocomplete="new-password"><button type="button" class="pw-toggle" data-target="#pwNew" aria-label="Show or hide password"><i class="bi bi-eye" aria-hidden="true"></i></button></div><div class="strength" id="pwStrength"><span></span></div><div class="form-text" id="pwHint">Minimum 8 characters, combine uppercase, lowercase, numbers, and symbols.</div></div>
+                                <div class="col-md-6"><label for="pwConfirm" class="form-label">Repeat new password</label><div class="pw-wrap"><input type="password" class="form-control" id="pwConfirm" required autocomplete="new-password"><button type="button" class="pw-toggle" data-target="#pwConfirm" aria-label="Show or hide password"><i class="bi bi-eye" aria-hidden="true"></i></button></div><div class="invalid-feedback">Passwords do not match.</div></div>
+                            </div>
+                            <div class="mt-4"><button type="submit" class="btn btn-primary"><i class="bi bi-key" aria-hidden="true"></i> Perbarui kata sandi</button></div>
+                        </form>
+                    </div>
+
+                    <!-- NOTIFIKASI -->
+                    <div class="tab-pane fade" id="pane-notifikasi" role="tabpanel" aria-labelledby="tab-notifikasi" tabindex="0">
+                        <form class="adm-card" id="formNotif">
+                            <div class="adm-card-head"><div><h2><i class="bi bi-bell" aria-hidden="true"></i>Report notifications</h2><p>Select which categories appear in the notification bell in the admin navbar.</p></div></div>
+                            <div class="switch-row">
+                                <label for="n-Emergency"><strong>Emergency</strong><small>Kasus gawat darurat, misalnya cedera lalu lintas</small></label>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-Emergency" checked></div>
+                            </div>
+                            <div class="switch-row">
+                                <label for="n-Inpatient"><strong>Inpatient</strong><small>Inpatient cases and patient safety</small></label>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-Inpatient" checked></div>
+                            </div>
+                            <div class="switch-row">
+                                <label for="n-Pharmacy"><strong>Pharmacy</strong><small>Peringatan stok obat menipis</small></label>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-Pharmacy" checked></div>
+                            </div>
+                            <div class="switch-row">
+                                <label for="n-Laboratory"><strong>Laboratory</strong><small>Critical laboratory results</small></label>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-Laboratory" checked></div>
+                            </div>
+                            <div class="switch-row">
+                                <label for="n-digest"><strong>Daily summary</strong><small>Appearance saja, belum mengirim email sungguhan</small></label>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="n-digest"></div>
+                            </div>
+                            <div class="mt-4"><button type="submit" class="btn btn-primary"><i class="bi bi-check-lg" aria-hidden="true"></i> Simpan preferensi</button></div>
+                        </form>
+                    </div>
+
+                    <!-- TAMPILAN -->
+                    <div class="tab-pane fade" id="pane-tampilan" role="tabpanel" aria-labelledby="tab-tampilan" tabindex="0">
+                        <section class="adm-card" aria-labelledby="thTitle">
+                            <div class="adm-card-head"><div><h2 id="thTitle"><i class="bi bi-palette" aria-hidden="true"></i>Theme</h2><p>Applies to the admin pages and is applied immediately.</p></div></div>
+                            <div class="theme-options">
+                                <label class="theme-card"><input type="radio" name="theme" value="light"><div class="theme-preview"><i></i><b></b></div><strong>Terang</strong></label>
+                                <label class="theme-card"><input type="radio" name="theme" value="dark"><div class="theme-preview dark"><i></i><b></b></div><strong>Gelap</strong></label>
+                                <label class="theme-card"><input type="radio" name="theme" value="system"><div class="theme-preview system"><i></i><b></b></div><strong>Follow system</strong></label>
+                            </div>
+                        </section>
+                        <section class="adm-card" aria-labelledby="dsTitle">
+                            <div class="adm-card-head"><div><h2 id="dsTitle"><i class="bi bi-sliders" aria-hidden="true"></i>Kenyamanan</h2></div></div>
+                            <div class="switch-row">
+                                <label for="sCompact"><strong>Compact table</strong><small>Reduce spacing between rows in the report table</small></label>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="sCompact"></div>
+                            </div>
+                            <div class="switch-row">
+                                <label for="sMotion"><strong>Kurangi animasi</strong><small>Matikan sebagian besar gerakan dan transisi</small></label>
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="sMotion"></div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- DATA -->
+                    <div class="tab-pane fade" id="pane-data" role="tabpanel" aria-labelledby="tab-data" tabindex="0">
+                        <section class="adm-card" aria-labelledby="dtTitle">
+                            <div class="adm-card-head"><div><h2 id="dtTitle"><i class="bi bi-database" aria-hidden="true"></i>Data & backup</h2><p>All data is stored in this browser's localStorage. There is no server or database.</p></div></div>
+                            <div class="data-stats">
+                                <div><strong id="dsReports">0</strong><span>Report tersimpan</span></div>
+                                <div><strong id="dsSize">0 KB</strong><span>Ukuran data</span></div>
+                                <div><strong id="dsTheme">-</strong><span>Active theme</span></div>
+                            </div>
+                            <button type="button" class="btn btn-outline-primary" id="btnBackup"><i class="bi bi-download" aria-hidden="true"></i> Unduh cadangan (JSON)</button>
+                        </section>
+                        <section class="adm-card danger-zone" aria-labelledby="dzTitle">
+                            <div class="adm-card-head"><div><h2 id="dzTitle"><i class="bi bi-exclamation-triangle text-danger" aria-hidden="true"></i>Danger zone</h2><p>Resets reports, settings, and theme to their initial state (sample data).</p></div></div>
+                            <button type="button" class="btn btn-outline-danger" id="btnResetData"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Reset all data</button>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+</main>
+
+<!-- MODAL: RESET DATA -->
+<div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="resetTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-body p-4">
+                <div class="confirm-ico"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i></div>
+                <h2 class="h5" id="resetTitle">Reset all data?</h2>
+                <p class="text-secondary mb-4">Reports and settings in this browser will be reset to the sample data. This action cannot be undone.</p>
+                <div class="d-flex gap-2 justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmReset">Ya, reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="admin.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

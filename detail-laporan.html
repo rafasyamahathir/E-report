@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reports | E-Medicare</title>
+    <meta name="description" content="Browse all illustrative reports in E-Medicare.">
+    <meta name="theme-color" content="#4D8DBA">
+    <link rel="icon" href="hospital.png">
+    <script>document.documentElement.className += ' js';</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.css" integrity="sha512-vWHsp0PuTxwRMLtGTnbS7PDNtI7yFmmiFq24hjcqpup/KK7ixxWdXwRmerG9gu7peaSRIVxpFcfBSVrGzWcF4w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"></div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg site-nav nav-solid" aria-label="Main navigation">
+    <div class="container">
+        <a href="index.html#hero" class="navbar-brand"><img src="hospital.png" alt="E-Medicare"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarLinks">
+            <ul class="navbar-nav mb-2 mx-auto mb-lg-0 gap-1 gap-lg-4 align-items-lg-center">
+                    <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="index.html#recent" class="nav-link">Recent</a></li>
+                    <li class="nav-item"><a href="index.html#faq" class="nav-link">FAQ</a></li>
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-shield-check" aria-hidden="true"></i> Admin</button>
+                        <ul class="dropdown-menu nav-dropdown">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2" aria-hidden="true"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="statistik.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i>Statistics</a></li>
+                            <li><a class="dropdown-item" href="pengaturan.html"><i class="bi bi-gear" aria-hidden="true"></i>Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#contact" class="btn btn-primary contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR END -->
+
+<header class="report-hero warna-bg hero-wrap" style="padding-bottom:6rem">
+    <div class="container">
+        <nav class="crumbs hero-in" style="--d:0" aria-label="Breadcrumb">
+            <a href="index.html">Home</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span aria-current="page">All Reports</span>
+        </nav>
+        <h1 class="hero-in" style="--d:1">Report Details</h1>
+        <p class="lead hero-in mt-3 mb-0" style="--d:2;max-width:36rem;color:rgba(255,255,255,.92)">Illustrative cases for demonstration only. No real patient information is included.</p>
+    </div>
+    <svg class="hero-ecg" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M0 60 H140 L160 60 L172 48 L184 60 H210 L222 66 L238 8 L256 96 L270 60 H300 L318 50 L336 60 H620 L640 60 L652 48 L664 60 H690 L702 66 L718 8 L736 96 L750 60 H780 L798 50 L816 60 H1200"/></svg>
+</header>
+<main class="list-main">
+    <div class="container">
+        <div class="report-grid">
+            <div data-reveal="up" style="--d:0">
+                <article class="card report-card h-100">
+                    <div class="report-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCy8gGy3R0RkZbgr_VyP1-W1iMdZLZT3V3W5oYQGQswQ&s=10" class="card-img-top report-image-slot" alt="Road traffic injury report" loading="lazy" data-fallback>
+                        <span class="report-chip"><i class="bi bi-car-front-fill" aria-hidden="true"></i>Emergency</span>
+                        <span class="report-id">#EMR-2026-001</span>
+                        <span class="report-time"><i class="bi bi-clock" aria-hidden="true"></i>2 days ago</span>
+                    </div>
+                    <div class="card-body warna-teks warna-card">
+                        <h2 class="h5 card-title">Road Traffic Injury</h2>
+                        <p class="card-text">An unidentified patient was brought to the emergency department after a road traffic collision. The case was recorded for clinical assessment and care-team follow-up.</p>
+                        <a class="btn report-btn" href="detail-road-traffic-injury.html">View Details <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div data-reveal="up" style="--d:1">
+                <article class="card report-card h-100">
+                    <div class="report-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJcqcVWvfLjeCauJUO_AQCI3YMZm1aQsylsolbzbbOzQ&s=10" class="card-img-top report-image-slot" alt="Patient monitoring report" loading="lazy" data-fallback>
+                        <span class="report-chip"><i class="bi bi-heart-pulse-fill" aria-hidden="true"></i>Inpatient</span>
+                        <span class="report-id">#EMR-2026-002</span>
+                        <span class="report-time"><i class="bi bi-clock" aria-hidden="true"></i>1 days ago</span>
+                    </div>
+                    <div class="card-body warna-teks warna-card">
+                        <h2 class="h5 card-title">Cancer Patient (Stage III)</h2>
+                        <p class="card-text">A patient diagnosed with stage III cancer is receiving treatment in the inpatient unit. The case was recorded for ongoing clinical assessment and care-team follow-up.</p>
+                        <a class="btn report-btn" href="detail-patient-monitoring.html">View Details <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div data-reveal="up" style="--d:2">
+                <article class="card report-card h-100">
+                    <div class="report-media">
+                        <img src="obat-habis.jpg" class="card-img-top report-image-slot" alt="Medication stock alert report" loading="lazy" data-fallback>
+                        <span class="report-chip"><i class="bi bi-capsule" aria-hidden="true"></i>Pharmacy</span>
+                        <span class="report-id">#EMR-2026-003</span>
+                        <span class="report-time"><i class="bi bi-clock" aria-hidden="true"></i>2 days ago</span>
+                    </div>
+                    <div class="card-body warna-teks warna-card">
+                        <h2 class="h5 card-title">Medication Stock Alert</h2>
+                        <p class="card-text">A department reported that an essential medication was running low. The alert was recorded so the pharmacy team could review stock and coordinate replenishment.</p>
+                        <a class="btn report-btn" href="detail-medication-stock-alert.html">View Details <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div data-reveal="up" style="--d:0">
+                <article class="card report-card h-100">
+                    <div class="report-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCjn35QpVqIl8uTzgE6142vmwW3kruOWe9VLNSgyN3sA&s=10" class="card-img-top report-image-slot" alt="Allergic reaction report" loading="lazy" data-fallback>
+                        <span class="report-chip"><i class="bi bi-bandaid-fill" aria-hidden="true"></i>Emergency</span>
+                        <span class="report-id">#EMR-2026-004</span>
+                        <span class="report-time"><i class="bi bi-clock" aria-hidden="true"></i>17 hours ago</span>
+                    </div>
+                    <div class="card-body warna-teks warna-card">
+                        <h2 class="h5 card-title">Severe Allergic Reaction</h2>
+                        <p class="card-text">A patient was assessed in the emergency department after developing a suspected severe allergic reaction. The case was documented for clinical review and follow-up.</p>
+                        <a class="btn report-btn" href="detail-allergic-reaction.html">View Details <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div data-reveal="up" style="--d:1">
+                <article class="card report-card h-100">
+                    <div class="report-media">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgqR5LpdAawms1M4Tvay4KrO1OHPoD_Bgwn8Dpf5OPVg&s=10" class="card-img-top report-image-slot" alt="Inpatient fall incident report" loading="lazy" data-fallback>
+                        <span class="report-chip"><i class="bi bi-heartbreak-fill" aria-hidden="true"></i>Inpatient Safety</span>
+                        <span class="report-id">#EMR-2026-005</span>
+                        <span class="report-time"><i class="bi bi-clock" aria-hidden="true"></i>1 days ago</span>
+                    </div>
+                    <div class="card-body warna-teks warna-card">
+                        <h2 class="h5 card-title">Inpatient Fall Incident</h2>
+                        <p class="card-text">A patient fall in a hospital room was reported to the care team. The incident was documented for assessment, review, and appropriate follow-up.</p>
+                        <a class="btn report-btn" href="detail-inpatient-fall.html">View Details <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div data-reveal="up" style="--d:2">
+                <article class="card report-card h-100">
+                    <div class="report-media">
+                        <img src="pegawai-kaget.jpg" class="card-img-top report-image-slot" alt="Critical laboratory result report" loading="lazy" data-fallback>
+                        <span class="report-chip"><i class="bi bi-clipboard2-pulse-fill" aria-hidden="true"></i>Laboratory</span>
+                        <span class="report-id">#EMR-2026-006</span>
+                        <span class="report-time"><i class="bi bi-clock" aria-hidden="true"></i>8 hours ago</span>
+                    </div>
+                    <div class="card-body warna-teks warna-card">
+                        <h2 class="h5 card-title">Critical Lab Result Alert</h2>
+                        <p class="card-text">A laboratory team flagged a critical test result and recorded the notification for prompt review by the responsible clinical team.</p>
+                        <a class="btn report-btn" href="detail-critical-lab-result.html">View Details <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row py-5 gy-4">
+            <div class="col-lg-5 col-md-6" data-reveal="up">
+                <a href="index.html#hero" class="footer-brand d-inline-flex align-items-center gap-3 text-decoration-none">
+                    <img width="48" src="hospital.png" alt="" class="rounded">
+                    <span class="h4 mb-0 fw-bold">E-Medicare</span>
+                </a>
+                <p class="footer-description mt-3 mb-0">
+                    A single platform for organizing medical reports and supporting
+                    informed, coordinated healthcare.
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-6" data-reveal="up" style="--d:1">
+                <h2 class="footer-heading">Explore</h2>
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="index.html#hero"><i class="bi bi-house-door-fill" aria-hidden="true"></i><span>Home</span></a>
+                    <a href="index.html#about"><i class="bi bi-info-circle-fill" aria-hidden="true"></i><span>About</span></a>
+                    <a href="index.html#services"><i class="bi bi-heart-pulse-fill" aria-hidden="true"></i><span>Services</span></a>
+                    <a href="index.html#recent"><i class="bi bi-file-earmark-medical-fill" aria-hidden="true"></i><span>Recent Reports</span></a>
+                    <a href="index.html#faq"><i class="bi bi-question-circle-fill" aria-hidden="true"></i><span>FAQ</span></a>
+                    <a href="dashboard.html"><i class="bi bi-speedometer2" aria-hidden="true"></i><span>Dashboard</span></a>
+                    <a href="statistik.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Statistics</span></a>
+                    <a href="pengaturan.html"><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
+                </nav>
+            </div>
+            <div class="col-lg-4 col-md-6" id="contact" data-reveal="up" style="--d:2">
+                <h2 class="footer-heading">Contact</h2>
+                <div class="footer-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                        <span>E-medicare@gmail.com</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                        <span>118</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                        <span>Jl. Raya Jonggol No.1A, Sukamanah, Kec. Jonggol, Kabupaten Bogor, Jawa Barat 16830</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="mb-0">&copy; 2026 <span class="fw-semibold">E-Medicare</span>. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- FOOTER END -->
+<button type="button" class="to-top" aria-label="Back to top"><i class="bi bi-arrow-up" aria-hidden="true"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="main.js"></script>
+<script>
+    (function () {
+        var map = { "road-traffic-injury": "detail-road-traffic-injury.html", "patient-monitoring": "detail-patient-monitoring.html", "medication-stock-alert": "detail-medication-stock-alert.html", "allergic-reaction": "detail-allergic-reaction.html", "inpatient-fall": "detail-inpatient-fall.html", "critical-lab-result": "detail-critical-lab-result.html" };
+        var key = window.location.hash.slice(1);
+        if (map[key]) window.location.replace(map[key]);
+    })();
+</script>
+</body>
+</html>

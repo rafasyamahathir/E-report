@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Lab Result Alert | E-Medicare</title>
+    <meta name="description" content="A laboratory team flagged a critical test result and recorded the notification for prompt review by the responsible clinical team.">
+    <meta name="theme-color" content="#4D8DBA">
+    <link rel="icon" href="hospital.png">
+    <script>document.documentElement.className += ' js';</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.css" integrity="sha512-vWHsp0PuTxwRMLtGTnbS7PDNtI7yFmmiFq24hjcqpup/KK7ixxWdXwRmerG9gu7peaSRIVxpFcfBSVrGzWcF4w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"></div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg site-nav nav-solid" aria-label="Main navigation">
+    <div class="container">
+        <a href="index.html#hero" class="navbar-brand"><img src="hospital.png" alt="E-Medicare"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarLinks">
+            <ul class="navbar-nav mb-2 mx-auto mb-lg-0 gap-1 gap-lg-4 align-items-lg-center">
+                    <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="index.html#recent" class="nav-link">Recent</a></li>
+                    <li class="nav-item"><a href="index.html#faq" class="nav-link">FAQ</a></li>
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-shield-check" aria-hidden="true"></i> Admin</button>
+                        <ul class="dropdown-menu nav-dropdown">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2" aria-hidden="true"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="statistik.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i>Statistics</a></li>
+                            <li><a class="dropdown-item" href="pengaturan.html"><i class="bi bi-gear" aria-hidden="true"></i>Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="index.html#contact" class="btn btn-primary contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR END -->
+
+<header class="report-hero warna-bg hero-wrap">
+    <div class="container">
+        <nav class="crumbs hero-in" style="--d:0" aria-label="Breadcrumb">
+            <a href="index.html">Home</a><i class="bi bi-chevron-right" aria-hidden="true"></i>
+            <a href="index.html#recent">Recent Reports</a><i class="bi bi-chevron-right" aria-hidden="true"></i>
+            <span aria-current="page">Critical Lab Result Alert</span>
+        </nav>
+        <h1 class="hero-in" style="--d:1">Critical Lab Result Alert</h1>
+        <div class="meta-row hero-in" style="--d:2">
+            <span class="meta-pill"><i class="bi bi-clipboard2-pulse-fill" aria-hidden="true"></i>Laboratory</span>
+            <span class="meta-pill"><i class="bi bi-hash" aria-hidden="true"></i>EMR-2026-006</span>
+            <span class="meta-pill"><i class="bi bi-clock" aria-hidden="true"></i>8 hours ago</span>
+        </div>
+    </div>
+    <svg class="hero-ecg" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M0 60 H140 L160 60 L172 48 L184 60 H210 L222 66 L238 8 L256 96 L270 60 H300 L318 50 L336 60 H620 L640 60 L652 48 L664 60 H690 L702 66 L718 8 L736 96 L750 60 H780 L798 50 L816 60 H1200"/></svg>
+</header>
+
+<main class="report-main">
+    <div class="container">
+        <figure class="report-figure hero-in" style="--d:3">
+            <img src="pegawai-kaget.jpg" alt="Critical laboratory result report" data-fallback>
+        </figure>
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <section class="report-panel" data-reveal="up">
+                    <h2><i class="bi bi-file-earmark-medical-fill" aria-hidden="true"></i>Case summary</h2>
+                    <p>A laboratory team flagged a critical test result and recorded the notification for prompt review by the responsible clinical team.</p>
+                    <p>The notification is recorded with the flagged result so the responsible clinical team can find it quickly and review it without delay.</p>
+                </section>
+
+                <section class="report-panel" data-reveal="up">
+                    <h2><i class="bi bi-card-list" aria-hidden="true"></i>Report details</h2>
+                    <dl class="kv">
+                        <div><dt>Report ID</dt><dd>EMR-2026-006</dd></div>
+                        <div><dt>Category</dt><dd>Laboratory</dd></div>
+                        <div><dt>Reporting unit</dt><dd>Laboratory</dd></div>
+                        <div><dt>Reported</dt><dd>8 hours ago</dd></div>
+                        <div><dt>Priority</dt><dd>High</dd></div>
+                        <div><dt>Report status</dt><dd>Submitted for review</dd></div>
+                    </dl>
+                </section>
+
+                <section class="report-panel" data-reveal="up">
+                    <h2><i class="bi bi-activity" aria-hidden="true"></i>Report progress</h2>
+                    <ol class="timeline">
+                        <li class="tl-step is-done" data-reveal="up" style="--d:0">
+                            <span class="tl-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span>
+                            <h3>Result flagged</h3>
+                            <p>The laboratory team flagged a critical test result.</p><span class="tl-time">8 hours ago</span>
+                        </li>
+                        <li class="tl-step is-current" data-reveal="up" style="--d:1">
+                            <span class="tl-dot"><i class="bi bi-record-circle" aria-hidden="true"></i></span>
+                            <h3>Notification recorded</h3>
+                            <p>The notification was recorded and submitted for review.</p>
+                        </li>
+                        <li class="tl-step " data-reveal="up" style="--d:2">
+                            <span class="tl-dot"><i class="bi bi-circle" aria-hidden="true"></i></span>
+                            <h3>Clinical team review</h3>
+                            <p>The responsible clinical team reviews the flagged result.</p>
+                        </li>
+                        <li class="tl-step " data-reveal="up" style="--d:3">
+                            <span class="tl-dot"><i class="bi bi-circle" aria-hidden="true"></i></span>
+                            <h3>Report closed</h3>
+                            <p>The report is closed once the review is complete.</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="report-panel" data-reveal="up">
+                    <h2><i class="bi bi-list-check" aria-hidden="true"></i>Recommended follow-up</h2>
+                    <ul class="checklist">
+                        <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Confirm the responsible clinical team received the notification</span></li>
+                        <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Review the flagged result promptly</span></li>
+                        <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Record the review outcome and close the report</span></li>
+                    </ul>
+                </section>
+
+                <div class="notice" data-reveal="up">
+                    <i class="bi bi-info-circle-fill" aria-hidden="true"></i>
+                    <span>Illustrative case for demonstration only. No real patient information is included.</span>
+                </div>
+
+                <nav class="pager" aria-label="Report navigation">
+                    <a class="prev" href="detail-inpatient-fall.html"><small><i class="bi bi-arrow-left" aria-hidden="true"></i> Previous report</small><strong>Inpatient Fall Incident</strong></a>
+                </nav>
+            </div>
+
+            <aside class="col-lg-4">
+                <div class="side-sticky">
+                    <div class="report-panel" data-reveal="left">
+                        <p class="side-label">Report status</p>
+                        <span class="status-badge st-submitted"><i class="bi bi-circle-fill" style="font-size:.55rem" aria-hidden="true"></i>Submitted for review</span>
+                        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-label="Report progress">
+                            <div class="progress-fill" style="--p:50%"></div>
+                        </div>
+                        <small class="text-secondary">Step 2 of 4: Notification recorded</small>
+                    </div>
+                    <div class="report-panel" data-reveal="left" style="--d:1">
+                        <p class="side-label">Responsible team</p>
+                        <div class="team-row">
+                            <span class="icon-wrap"><i class="bi bi-people-fill" aria-hidden="true"></i></span>
+                            <div><strong>Responsible clinical team</strong><span>Laboratory</span></div>
+                        </div>
+                    </div>
+                    <div class="report-panel mb-0" data-reveal="left" style="--d:2">
+                        <p class="side-label">Other reports</p>
+                        <div class="side-links">
+                            <a href="detail-road-traffic-injury.html"><i class="bi bi-car-front-fill" aria-hidden="true"></i><span>Road Traffic Injury</span></a>
+                            <a href="detail-patient-monitoring.html"><i class="bi bi-heart-pulse-fill" aria-hidden="true"></i><span>Cancer Patient (Stage III)</span></a>
+                            <a href="detail-medication-stock-alert.html"><i class="bi bi-capsule" aria-hidden="true"></i><span>Medication Stock Alert</span></a>
+                            <a href="detail-allergic-reaction.html"><i class="bi bi-bandaid-fill" aria-hidden="true"></i><span>Severe Allergic Reaction</span></a>
+                            <a href="detail-inpatient-fall.html"><i class="bi bi-heartbreak-fill" aria-hidden="true"></i><span>Inpatient Fall Incident</span></a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row py-5 gy-4">
+            <div class="col-lg-5 col-md-6" data-reveal="up">
+                <a href="index.html#hero" class="footer-brand d-inline-flex align-items-center gap-3 text-decoration-none">
+                    <img width="48" src="hospital.png" alt="" class="rounded">
+                    <span class="h4 mb-0 fw-bold">E-Medicare</span>
+                </a>
+                <p class="footer-description mt-3 mb-0">
+                    A single platform for organizing medical reports and supporting
+                    informed, coordinated healthcare.
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-6" data-reveal="up" style="--d:1">
+                <h2 class="footer-heading">Explore</h2>
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="index.html#hero"><i class="bi bi-house-door-fill" aria-hidden="true"></i><span>Home</span></a>
+                    <a href="index.html#about"><i class="bi bi-info-circle-fill" aria-hidden="true"></i><span>About</span></a>
+                    <a href="index.html#services"><i class="bi bi-heart-pulse-fill" aria-hidden="true"></i><span>Services</span></a>
+                    <a href="index.html#recent"><i class="bi bi-file-earmark-medical-fill" aria-hidden="true"></i><span>Recent Reports</span></a>
+                    <a href="index.html#faq"><i class="bi bi-question-circle-fill" aria-hidden="true"></i><span>FAQ</span></a>
+                    <a href="dashboard.html"><i class="bi bi-speedometer2" aria-hidden="true"></i><span>Dashboard</span></a>
+                    <a href="statistik.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Statistics</span></a>
+                    <a href="pengaturan.html"><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
+                </nav>
+            </div>
+            <div class="col-lg-4 col-md-6" id="contact" data-reveal="up" style="--d:2">
+                <h2 class="footer-heading">Contact</h2>
+                <div class="footer-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                        <span>E-medicare@gmail.com</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                        <span>118</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                        <span>Jl. Raya Jonggol No.1A, Sukamanah, Kec. Jonggol, Kabupaten Bogor, Jawa Barat 16830</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="mb-0">&copy; 2026 <span class="fw-semibold">E-Medicare</span>. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- FOOTER END -->
+<button type="button" class="to-top" aria-label="Back to top"><i class="bi bi-arrow-up" aria-hidden="true"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics | E-Medicare Admin</title>
+    <meta name="description" content="E-Medicare medical statistics: trends, categories, status, and departments.">
+    <meta name="theme-color" content="#4D8DBA">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="hospital.png">
+    <script>
+        /* Terapkan tema & kelas "js" sebelum halaman tampil (mencegah kilatan warna) */
+        (function () {
+            try {
+                var m = localStorage.getItem('em3.theme') || 'system';
+                var d = m === 'dark' || (m === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                document.documentElement.setAttribute('data-bs-theme', d ? 'dark' : 'light');
+            } catch (e) {}
+            document.documentElement.className += ' js';
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.css" integrity="sha512-vWHsp0PuTxwRMLtGTnbS7PDNtI7yFmmiFq24hjcqpup/KK7ixxWdXwRmerG9gu7peaSRIVxpFcfBSVrGzWcF4w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin" data-page="statistik">
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- TOPBAR ADMIN -->
+<header class="admin-topbar">
+    <button class="tb-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar" aria-label="Open menu"><i class="bi bi-list" aria-hidden="true"></i></button>
+    <a class="tb-brand" href="index.html" aria-label="E-Medicare, back to home">
+        <img src="hospital.png" alt=""><strong>E-Medicare</strong><span class="tb-tag">Admin</span>
+    </a>
+
+    <div class="tb-search" role="search">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        <input type="search" id="adminSearch" placeholder="Search reports or pages..." autocomplete="off" aria-label="Search reports or pages">
+        <kbd aria-hidden="true">/</kbd>
+        <div class="search-results" id="searchResults" hidden></div>
+    </div>
+
+    <div class="ms-auto d-flex align-items-center gap-2">
+        <button type="button" class="tb-btn d-none d-sm-grid" id="quickAdd" title="Add report" aria-label="Add report"><i class="bi bi-plus-lg" aria-hidden="true"></i></button>
+        <button type="button" class="tb-btn tb-theme d-none d-sm-grid" id="themeToggle" title="Switch light/dark mode" aria-label="Switch light or dark mode"><i class="bi bi-moon-stars-fill" aria-hidden="true"></i><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
+        <a class="tb-btn d-none d-md-grid" href="index.html" title="View website" aria-label="View website"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+
+        <!-- Notifications -->
+        <div class="dropdown">
+            <button type="button" class="tb-btn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="Notifications">
+                <i class="bi bi-bell-fill" aria-hidden="true"></i><span class="tb-badge" id="notifBadge" hidden>0</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end adm-menu notif-menu">
+                <div class="notif-head">
+                    <h2>Notifications</h2>
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="notifReadAll">Mark as read</button>
+                </div>
+                <div class="notif-list" id="notifList"></div>
+                <div class="notif-foot"><a href="dashboard.html" class="fw-semibold text-decoration-none">View all reports</a></div>
+            </div>
+        </div>
+
+        <!-- Profil -->
+        <div class="dropdown">
+            <button type="button" class="tb-profile" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Profile menu">
+                <span class="tb-avatar" data-bind="adminInitials">AD</span>
+                <span class="tb-who d-none d-md-block"><strong data-bind="adminName">Admin</strong><small data-bind="adminRole">System manager</small></span>
+                <i class="bi bi-chevron-down d-none d-md-inline small" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end adm-menu">
+                <li><a class="dropdown-item" href="pengaturan.html#akun"><i class="bi bi-person-circle" aria-hidden="true"></i>My account</a></li>
+                <li><a class="dropdown-item" href="pengaturan.html"><i class="bi bi-gear" aria-hidden="true"></i>Settings</a></li>
+                <li><a class="dropdown-item" href="statistik.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i>Statistics</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button type="button" class="dropdown-item" data-theme-set="light"><i class="bi bi-sun" aria-hidden="true"></i>Light mode</button></li>
+                <li><button type="button" class="dropdown-item" data-theme-set="dark"><i class="bi bi-moon-stars" aria-hidden="true"></i>Dark mode</button></li>
+                <li><button type="button" class="dropdown-item" data-theme-set="system"><i class="bi bi-circle-half" aria-hidden="true"></i>Follow system</button></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-box-arrow-left" aria-hidden="true"></i>Go to website</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- TOPBAR ADMIN END -->
+
+<!-- SIDEBAR -->
+<aside class="admin-sidebar" aria-label="Admin navigation">
+            <p class="side-heading">Admin menu</p>
+            <nav class="side-nav" aria-label="Admin menu">
+                <a href="dashboard.html" class=""><i class="bi bi-speedometer2" aria-hidden="true"></i><span>Dashboard</span><span class="side-count" data-bind="sideCount">0</span></a>
+                <a href="statistik.html" class="active" aria-current="page"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Statistics</span></a>
+                <a href="pengaturan.html" class=""><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
+            </nav>
+            <p class="side-heading">Website</p>
+            <nav class="side-nav" aria-label="Website menu">
+                <a href="index.html" class=""><i class="bi bi-house-door" aria-hidden="true"></i><span>Home</span></a>
+                <a href="index.html#recent" class=""><i class="bi bi-file-earmark-medical" aria-hidden="true"></i><span>Recent Reports</span></a>
+                <a href="detail-laporan.html" class=""><i class="bi bi-collection" aria-hidden="true"></i><span>All reports</span></a>
+                <a href="index.html#faq" class=""><i class="bi bi-question-circle" aria-hidden="true"></i><span>FAQ</span></a>
+            </nav>
+            <div class="side-card">
+                <strong data-bind="hospital">E-Medicare</strong>
+                <small>Hospital reporting system</small>
+                <div class="status-line"><span class="pulse-dot" aria-hidden="true"></span>System active</div>
+            </div>
+</aside>
+<div class="offcanvas offcanvas-start mobile-sidebar" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title d-flex align-items-center gap-2" id="mobileSidebarLabel"><img src="hospital.png" alt="" width="40">E-Medicare</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+            <p class="side-heading">Admin menu</p>
+            <nav class="side-nav" aria-label="Admin menu">
+                <a href="dashboard.html" class=""><i class="bi bi-speedometer2" aria-hidden="true"></i><span>Dashboard</span><span class="side-count" data-bind="sideCount">0</span></a>
+                <a href="statistik.html" class="active" aria-current="page"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Statistics</span></a>
+                <a href="pengaturan.html" class=""><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
+            </nav>
+            <p class="side-heading">Website</p>
+            <nav class="side-nav" aria-label="Website menu">
+                <a href="index.html" class=""><i class="bi bi-house-door" aria-hidden="true"></i><span>Home</span></a>
+                <a href="index.html#recent" class=""><i class="bi bi-file-earmark-medical" aria-hidden="true"></i><span>Recent Reports</span></a>
+                <a href="detail-laporan.html" class=""><i class="bi bi-collection" aria-hidden="true"></i><span>All reports</span></a>
+                <a href="index.html#faq" class=""><i class="bi bi-question-circle" aria-hidden="true"></i><span>FAQ</span></a>
+            </nav>
+            <div class="side-card">
+                <strong data-bind="hospital">E-Medicare</strong>
+                <small>Hospital reporting system</small>
+                <div class="status-line"><span class="pulse-dot" aria-hidden="true"></span>System active</div>
+            </div>
+    </div>
+</div>
+<!-- SIDEBAR END -->
+
+<main class="admin-main">
+    <section class="admin-banner warna-bg hero-wrap">
+        <nav class="crumbs hero-in" style="--d:0" aria-label="Breadcrumb">
+            <a href="index.html">Home</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Admin</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span aria-current="page">Statistics</span>
+        </nav>
+        <h1 class="hero-in" style="--d:1">Report statistics</h1>
+        <p class="hero-in" style="--d:2">Monitor trends, categories, and report status for E-Medicare. Showing <strong id="periodLabel">the last 14 days</strong>.</p>
+        <div class="banner-actions hero-in align-items-center" style="--d:3">
+            <div class="segmented" role="group" aria-label="Select period">
+                <button type="button" data-period="7">7 days</button>
+                <button type="button" data-period="14" class="is-on">14 days</button>
+                <button type="button" data-period="30">30 days</button>
+            </div>
+            <button type="button" class="btn btn-white" id="btnExport"><i class="bi bi-download" aria-hidden="true"></i> Export CSV</button>
+            <button type="button" class="btn btn-ghost" id="btnPrint"><i class="bi bi-printer" aria-hidden="true"></i> Cetak</button>
+        </div>
+        <svg class="hero-ecg" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M0 60 H140 L160 60 L172 48 L184 60 H210 L222 66 L238 8 L256 96 L270 60 H300 L318 50 L336 60 H620 L640 60 L652 48 L664 60 H690 L702 66 L718 8 L736 96 L750 60 H780 L798 50 L816 60 H1200"/></svg>
+    </section>
+
+        <div class="row g-4 mb-4">
+            <div class="col-sm-6 col-xl-3" data-reveal="up" style="--d:0">
+                <div class="adm-card kpi ">
+                    <div class="kpi-top">
+                        <div><p class="kpi-label">Total reports</p><p class="kpi-value" data-kpi="total">0</p></div>
+                        <span class="kpi-icon"><i class="bi bi-clipboard2-data" aria-hidden="true"></i></span>
+                    </div>
+                    <p class="kpi-note" data-kpi-note="total"></p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3" data-reveal="up" style="--d:1">
+                <div class="adm-card kpi ">
+                    <div class="kpi-top">
+                        <div><p class="kpi-label">Average per day</p><p class="kpi-value" data-kpi="avg">0</p></div>
+                        <span class="kpi-icon"><i class="bi bi-speedometer" aria-hidden="true"></i></span>
+                    </div>
+                    <p class="kpi-note" data-kpi-note="avg"></p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3" data-reveal="up" style="--d:2">
+                <div class="adm-card kpi is-good">
+                    <div class="kpi-top">
+                        <div><p class="kpi-label">Completion rate</p><p class="kpi-value" data-kpi="rate">0</p></div>
+                        <span class="kpi-icon"><i class="bi bi-check2-circle" aria-hidden="true"></i></span>
+                    </div>
+                    <p class="kpi-note" data-kpi-note="rate"></p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3" data-reveal="up" style="--d:3">
+                <div class="adm-card kpi is-alert">
+                    <div class="kpi-top">
+                        <div><p class="kpi-label">High priority</p><p class="kpi-value" data-kpi="high">0</p></div>
+                        <span class="kpi-icon"><i class="bi bi-flag-fill" aria-hidden="true"></i></span>
+                    </div>
+                    <p class="kpi-note" data-kpi-note="high"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-8" data-reveal="up">
+                <section class="adm-card h-100 mb-0" aria-labelledby="barTitle">
+                    <div class="adm-card-head"><div><h2 id="barTitle"><i class="bi bi-bar-chart-line" aria-hidden="true"></i>Reports per day</h2><p>Number of reports received each day in the selected period.</p></div></div>
+                    <div class="chart-wrap"><svg id="barChart" class="bar-chart" viewBox="0 0 640 250" role="img" aria-label="Grafik batang reports per day"></svg></div>
+                </section>
+            </div>
+            <div class="col-lg-4" data-reveal="up" style="--d:1">
+                <section class="adm-card h-100 mb-0" aria-labelledby="donutTitle">
+                    <div class="adm-card-head"><div><h2 id="donutTitle"><i class="bi bi-pie-chart" aria-hidden="true"></i>By category</h2></div></div>
+                    <div class="donut-wrap">
+                        <div class="donut" id="donut" role="img" aria-label="Donut chart of report categories"><div class="donut-center"><strong id="donutTotal">0</strong><span>reports</span></div></div>
+                        <ul class="legend" id="legend"></ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-5" data-reveal="up">
+                <section class="adm-card h-100 mb-0" aria-labelledby="stTitle">
+                    <div class="adm-card-head"><div><h2 id="stTitle"><i class="bi bi-diagram-3" aria-hidden="true"></i>Report status</h2><p>Status distribution for the selected period.</p></div></div>
+                    <div id="statusBars"></div>
+                </section>
+            </div>
+            <div class="col-lg-7" data-reveal="up" style="--d:1">
+                <section class="adm-card h-100 mb-0" aria-labelledby="dpTitle">
+                    <div class="adm-card-head"><div><h2 id="dpTitle"><i class="bi bi-hospital" aria-hidden="true"></i>Summary per departemen</h2></div></div>
+                    <div class="table-responsive" id="deptWrap">
+                        <table class="table adm-table align-middle">
+                            <thead><tr><th>Department</th><th>Total</th><th>Active</th><th>Critical</th><th>Share</th></tr></thead>
+                            <tbody id="deptRows"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <section class="adm-card mb-0" data-reveal="up" aria-labelledby="inTitle">
+            <div class="adm-card-head"><h2 id="inTitle"><i class="bi bi-lightbulb" aria-hidden="true"></i>Insights</h2></div>
+            <ul class="insight-list" id="insights"></ul>
+        </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="admin.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
